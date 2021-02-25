@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: db81584544316384b8e09d1148a0c906
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Paskow
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3fad9f8dfb6cd9d41a95cf2b30431788, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

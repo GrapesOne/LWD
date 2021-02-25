@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "700527388820",
+    "firebase_url": "https://long-way-down-default-rtdb.firebaseio.com",
+    "project_id": "long-way-down",
+    "storage_bucket": "long-way-down.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700527388820:android:296920865e3e06f1d2ac81",
+        "android_client_info": {
+          "package_name": "com.Vetka.TimeOut"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700527388820-3tpd14aph55jtf70d4fuvshv7tjmdkpd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcaMEXP_GMyrzM9cwy0Rr038ktWNofPdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700527388820-3tpd14aph55jtf70d4fuvshv7tjmdkpd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "700527388820-2mh5enkiqm810lrj76ipi76kp5v2l3t5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Vetka.LongWayDown"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

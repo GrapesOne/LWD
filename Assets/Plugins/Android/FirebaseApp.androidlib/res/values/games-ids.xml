@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Google Play game services IDs. Save this file as res/values/games-ids.xml in your project.-->
+<resources>
+  <!--app_id-->
+  <string name="app_id" translatable="false">404118849429</string>
+  <!--package_name-->
+  <string name="package_name" translatable="false">com.Vetka.LongWayDown</string>
+  <!--achievement And you are inquisitive-->
+  <string name="achievement_and_you_are_inquisitive" translatable="false">CgkIlY_xuuELEAIQAQ</string>
+  <!--leaderboard Deepest descent-->
+  <string name="leaderboard_deepest_descent" translatable="false">CgkIlY_xuuELEAIQAA</string>
+</resources>

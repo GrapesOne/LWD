@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99935b8f8e0520f429b9097c5ede3196, type: 3}
+  m_Name: Sphere
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  sprite: {fileID: 21300000, guid: 7b108e143a0352d4e89b20158568d15d, type: 3}
+  EntityType: 2
+  difficult: 1
+  environment: 1
+  audio:
+    clip: {fileID: 8300000, guid: 253d35e7dcb453e4781290a09e819b34, type: 3}
+    volume: 0.4

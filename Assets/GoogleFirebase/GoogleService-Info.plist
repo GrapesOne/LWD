@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>700527388820-2mh5enkiqm810lrj76ipi76kp5v2l3t5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.700527388820-2mh5enkiqm810lrj76ipi76kp5v2l3t5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCWtQBTAlM30-wJPH1u7YWuoIW9ardm0s4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>700527388820</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.Vetka.LongWayDown</string>
+	<key>PROJECT_ID</key>
+	<string>long-way-down</string>
+	<key>STORAGE_BUCKET</key>
+	<string>long-way-down.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:700527388820:ios:7d851afeec6cf89cd2ac81</string>
+	<key>DATABASE_URL</key>
+	<string>https://long-way-down-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
