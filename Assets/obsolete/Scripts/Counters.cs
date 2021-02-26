@@ -30,7 +30,7 @@ public class Counters : Bonuses {
 			LoadData(savedGameMetadata);
 		 else
 			LoadDataLocal();
-		PreviousRecord = AllCounters["MaxDistance"];
+		 PreviousRecord = AllCounters["MaxDistance"];
 	}
 
 	public static bool IsNewRecord => PreviousRecord < AllCounters["MaxDistance"];

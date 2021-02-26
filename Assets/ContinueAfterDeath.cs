@@ -9,6 +9,14 @@ public class ContinueAfterDeath : Counters
     private UnityEngine.UI.Button CountinueButton;
     private PauseBotton pauseBotton;
 
+#if UNITY_EDITOR
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) OnButtonAction();
+    }
+
+#endif
+
     private void Awake()
     {
         CountinueButton = gameObject.GetComponent<UnityEngine.UI.Button>();
@@ -22,6 +30,7 @@ public class ContinueAfterDeath : Counters
 
     public void OnButtonAction()
     {
+        System.GC.Collect();
         Сontinue();
         CameraManager.Instance.nowTarget = 1;
         AudioManager.Play();

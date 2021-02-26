@@ -11,6 +11,8 @@ public class Generator : IHaveTypeHolder
 
     private LinkedList<GameObject> Borders = new LinkedList<GameObject>();
     private Dictionary<int, LinkedList<GameObject>> ObsOnLevel = new Dictionary<int, LinkedList<GameObject>>();
+    private LevelBase[] _loadedBases = new LevelBase[0];
+    
     private static int _nowLevel, _group;
     private static bool _genDone = true, _resetRequested = false;
 
@@ -38,14 +40,13 @@ public class Generator : IHaveTypeHolder
         DestroyEvent -= DestroyObs;
     } 
     Vector3 v;
-    public async UniTask<bool> Generate(SettingsEnum.Difficulties difficulties, SettingsEnum.Environment environment)
+
+    private async UniTask<bool> Generate(SettingsEnum.Difficulties difficulties, SettingsEnum.Environment environment)
     {
         nowDifficulties = difficulties;
         nowEnvironment = environment;
         var @base = GetBase();
-        //Debug.Log(_nowLevel + " LEVEL" );
         if (!@base.Init()) return false;
-        //var id = @base.name + _nowLevel++;
         if(!ObsOnLevel.ContainsKey(_nowLevel)) ObsOnLevel[_nowLevel] = new LinkedList<GameObject>();
         v.x = -LevelBase.size.x*_genObSize.x/2f;
         var startX = v.x;
@@ -66,9 +67,7 @@ public class Generator : IHaveTypeHolder
             await UniTask.Yield();
             v.x = startX;
             v.y -= _genObSize.y;
-            /*var nv = Camera.main.GetComponent<CameraMover>().mainPos;
-            nv.y = v.y+10;
-            Camera.main.GetComponent<CameraMover>().mainPos = nv;*/
+           
         }
         BorderGenerate(1);
         _nowLevel++;
@@ -92,12 +91,10 @@ public class Generator : IHaveTypeHolder
         }
 
         if (Borders.Count <= 20) return;
-        var last = Borders.Last;
-        PoolManager.putGameObjectToPool(last.Value);
-        Borders.Remove(last);
-        last = Borders.Last;
-        PoolManager.putGameObjectToPool(last.Value);
-        Borders.Remove(last);
+        PoolManager.putGameObjectToPool(Borders.Last.Value);
+        Borders.RemoveLast();
+        PoolManager.putGameObjectToPool(Borders.Last.Value);
+        Borders.RemoveLast();
     }
 
     private void ClearBorder()
@@ -105,21 +102,22 @@ public class Generator : IHaveTypeHolder
         foreach (var border in Borders) PoolManager.putGameObjectToPool(border);
         Borders.Clear();
     }
-    
-    public LevelBase GetBase()
+
+    private LevelBase GetBase()
     {
         if (!_hasBases) {
             LoadBases();
             _hasBases = _bases.Count > 0;
         }
         if (!_hasBases) return null;
-        var bases = _bases.FindAll(@base => @base.difficult == nowDifficulties 
-                                            && @base.environment == nowEnvironment);
-        return bases[Random.Range(0, bases.Count)];
+        if(_loadedBases.Length==0)
+            _loadedBases = _bases.FindAll(@base => @base.difficult == nowDifficulties 
+                                            && @base.environment == nowEnvironment).ToArray();
+        return _loadedBases[Random.Range(0, _loadedBases.Length)];
     }
 
-    
-    public async UniTask DestroyObs()
+
+    private async UniTask DestroyObs()
     {
         if (_nowLevel < 5) return;
         await InternalDestroy(_nowLevel- 5);

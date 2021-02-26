@@ -15,6 +15,7 @@ public class DeathScreen : MonoBehaviour
     
     public void EnableMenu()
     {
+        System.GC.Collect();
         Distance.Instance.SetupDistance();
         Text.text = Counters.SphereCost.ToString();
         CameraManager.Instance.nowTarget = 3;

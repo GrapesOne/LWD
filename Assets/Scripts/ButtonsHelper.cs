@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class ButtonsHelper : MonoBehaviour
 {
+    public static ButtonsHelper Instance { private set; get; }
     public Image ls, rs, lu, ru;
     public float time, delay;
     [Required]
@@ -19,13 +20,33 @@ public class ButtonsHelper : MonoBehaviour
     private CancellationTokenSource _tokenSource;
     public async UniTaskVoid Start()
     {
-       
+        Instance = this;
         _tokenSource = new CancellationTokenSource();
         ShowIfNoClick(_tokenSource.Token);
     }
     // Update is called once per frame
     public void ButtonClicked(Image ob)
     {
+        _tokenSource.Cancel();
+        ls.color -= ls.color * Mask1;
+        rs.color -= rs.color * Mask1;
+        lu.color -= lu.color * Mask1;
+        ru.color -= ru.color * Mask1;
+        ShowOnClick(ob);
+        _tokenSource = new CancellationTokenSource();
+        ShowIfNoClick(_tokenSource.Token);
+    }
+
+    public void ButtonClicked(int i)
+    {
+        var ob = i switch
+        {
+            0 => ru,
+            1 => lu,
+            2 => rs,
+            3 => ls,
+            _ => ru
+        };
         _tokenSource.Cancel();
         ls.color -= ls.color * Mask1;
         rs.color -= rs.color * Mask1;
@@ -49,6 +70,7 @@ public class ButtonsHelper : MonoBehaviour
         await UniTask.Delay((int)(time*100));
         ob.color -= ob.color * Mask1;
     }
+    
     public async UniTask ShowIfNoClick(CancellationToken token)
     {
         await UniTask.Delay((int)(delay*100));

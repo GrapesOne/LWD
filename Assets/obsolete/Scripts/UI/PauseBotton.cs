@@ -6,7 +6,8 @@ using UnityEngine;
 public class PauseBotton : MonoBehaviour {
 	private float tmpl = 0;
 	public static PauseBotton Instance { private set; get; }
-	public AudioSource Source; 
+	public AudioSource Source;
+	
 	void Awake()
 	{
 		Instance = this;

@@ -7,6 +7,7 @@ public class TextControllerPause : MonoBehaviour
 {
     public TextMeshProUGUI CrystalText;
     public TextMeshProUGUI SphereText;
+    
     private void OnEnable()
     {
         CrystalText.text=Counters.AllCounters["Crystals"].ToString();

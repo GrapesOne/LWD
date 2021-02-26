@@ -1,26 +1,32 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
 	[Space]
-	public bool Grounded;
 	private bool wasPlayed, checkGround;
-	public int Force;
-	[Space]
+	
+	[Space][FoldoutGroup("Ground")]
+	public int ImpactForce;
+	[FoldoutGroup("Ground")]
+	public bool Grounded;
+	[FoldoutGroup("Ground")]
 	public LayerMask WhatIsGround;
+	[FoldoutGroup("Ground")]
 	public Transform GroundCheck;
+	[FoldoutGroup("Ground")]
 	public float GroundRadius;
 	[Space]
 	private Rigidbody2D BodyPhysic;
 	private Transform ObjectTransform;
 	private Trajectory Way;
-	public GameObject Count;
 	Counters CountManager;
 	[Space]
 	ParticleSystem  Particle;
-	[Space]
+	[Space][FoldoutGroup("Sounds")]
 	AudioSource Audio;
+	[FoldoutGroup("Sounds")]
 	public VolumedAudioClip step, jump, nothing, fall;
 	[Space] 
 	private SpriteRenderer _renderer;
@@ -29,7 +35,7 @@ public class Player : MonoBehaviour {
 	public delegate UniTaskVoid PlayerHandler();
 	public static event PlayerHandler ReturnEvent;
 	private bool FirstAction, SecondAction, SecondActionHandl,Return;
-	private int simulationSpeed = 10;
+	//private int simulationSpeed = 10;
 
 	async UniTaskVoid Start () {
 		
@@ -69,8 +75,33 @@ public class Player : MonoBehaviour {
 		
 		checkGround = Grounded;
 	}
+#if UNITY_EDITOR
+	void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.H))
+		{
+			ButtonsHelper.Instance.ButtonClicked(0);
+			Jump(1);
+		}
+		else if (Input.GetKeyDown(KeyCode.G))
+		{
+			ButtonsHelper.Instance.ButtonClicked(1);
+			Jump(-1);
+		}
+		else if (Input.GetKeyDown(KeyCode.N))
+		{
+			ButtonsHelper.Instance.ButtonClicked(2);
+			MoveToSide(1);
+		}
+		else if (Input.GetKeyDown(KeyCode.V))
+		{
+			ButtonsHelper.Instance.ButtonClicked(3);
+			MoveToSide(-1);
+		}
+	}
 
-
+#endif
+	
 	void PlayEffects()
 	{
 		if (!Grounded) wasPlayed = false;
@@ -108,7 +139,7 @@ public class Player : MonoBehaviour {
 				j = j > 0 ? 2 : 3;
 			else
 			{
-				if (Grounded) BodyPhysic.AddRelativeForce(transform.up * Force * 2);
+				if (Grounded) BodyPhysic.AddRelativeForce(transform.up * ImpactForce * 2);
 				FirstAction = false;
 				SecondAction = false;
 				return;
@@ -148,7 +179,7 @@ public class Player : MonoBehaviour {
 		if (Grounded)
 		{
 			AudioSet (nothing);
-			BodyPhysic.AddRelativeForce(transform.up * Force * 2);
+			BodyPhysic.AddRelativeForce(transform.up * ImpactForce * 2);
 		}
 
 		if (SecondActionHandl) SecondAction = false;
